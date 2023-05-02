@@ -40,6 +40,8 @@ function validate_time(time) {
 
     // Get digits (if none, half heartedly try reading English... or fail)
     if (time.match(/[0-9]+/g))           timedigs = time.match(/[0-9]+/g).join('');
+    else if (timeltrs.match("noon"))     timedigs = "1200";
+    else if (timeltrs.match("midnight")) timedigs = "0000";
     else if (timeltrs.match("one"))      timedigs = "100";
     else if (timeltrs.match("two"))      timedigs = "200";
     else if (timeltrs.match("three"))    timedigs = "300";
@@ -52,8 +54,6 @@ function validate_time(time) {
     else if (timeltrs.match("ten"))      timedigs = "1000";
     else if (timeltrs.match("eleven"))   timedigs = "1100";
     else if (timeltrs.match("twelve"))   timedigs = "1200";
-    else if (timeltrs.match("noon"))     timedigs = "1200";
-    else if (timeltrs.match("midnight")) timedigs = "0000";
     else  {
         console.log("INPUT: '" + timeorig + "'  -->  Returning false");
         return false;

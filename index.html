@@ -28,34 +28,18 @@
         <script>
             function process_time() {
                 time = validate_time(document.getElementById("mytime").value);
-
-                if (time) {
-                    document.getElementById("resultmil").innerHTML = time;
-                    document.getElementById("resultciv").innerHTML = miltime_to_civtime(time);
-                } else {
-                    document.getElementById("resultmil").innerHTML = "(invalid)";
-                    document.getElementById("resultciv").innerHTML = "(invalid)";
-                }
+                if (!time) time = "1200";
+                document.getElementById("mytime").value = time;
+                document.getElementById("resultciv").innerHTML = "or " + miltime_to_civtime(time);
             }
         </script>
     </head>
     <body>
         <h2>Time Text-Field Parsing & Validation</h2>
         <form action="javascript:process_time();">
-        <p>Enter a time:</p>
-        <input type="text" name="mytime" id="mytime" />
-        <input type="submit" value="Submit" />
+        <label for="mytime">Enter a time:</label>
+        <input type="text" name="mytime" id="mytime"  />
+        <span style="font-size: small; color: gray;" id="resultciv"></span>
         </form>
-        <br /><br />
-        <table>
-            <tr>
-            <td>Result (military):</td>
-            <td id="resultmil"></td>
-            </tr>
-            <tr>
-            <td>Result (civilian):</td>
-            <td id="resultciv"></td>
-            </tr>
-        </table>
     </body> 
 </html>
