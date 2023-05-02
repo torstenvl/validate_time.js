@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<!-- 
+╔═════════════════════════════════════════════════════════════════════════╗
+║                                                                         ║
+║ validate_time.js example page                                           ║
+║ Joshua Lee Ockert, 2023                                                 ║
+║                                                                         ║
+║ This file is hereby dedicated to the public domain.                     ║
+║                                                                         ║
+║ Permission to use, copy, modify, and/or distribute this work for any    ║
+║ purpose is hereby granted, without precondition or royalty.             ║
+║                                                                         ║
+║ THIS WORK IS PROVIDED "AS IS" WITH NO WARRANTY OF ANY KIND. THE IMPLIED ║
+║ WARRANTIES OF MERCHANTABILITY, FITNESS, NON-INFRINGEMENT, AND TITLE ARE ║
+║ EXPRESSLY DISCLAIMED. NO AUTHOR SHALL BE LIABLE UNDER ANY THEORY OF LAW ║
+║ FOR ANY DAMAGES OF ANY KIND RESULTING FROM THE USE OF THIS WORK.        ║
+║                                                                         ║
+╚═════════════════════════════════════════════════════════════════════════╝
+-->
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+        <title>Time Text-Field Parsing & Validation</title>
+        <script src="validate_time.js"></script>
+        <script>
+            function process_time() {
+                time = validate_time(document.getElementById("mytime").value);
+
+                if (time) {
+                    document.getElementById("resultmil").innerHTML = time;
+                    document.getElementById("resultciv").innerHTML = miltime_to_civtime(time);
+                } else {
+                    document.getElementById("resultmil").innerHTML = "(invalid)";
+                    document.getElementById("resultciv").innerHTML = "(invalid)";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Time Text-Field Parsing & Validation</h2>
+        <form action="javascript:process_time();">
+        <p>Enter a time:</p>
+        <input type="text" name="mytime" id="mytime" />
+        <input type="submit" value="Submit" />
+        </form>
+        <br /><br />
+        <table>
+            <tr>
+            <td>Result (military):</td>
+            <td id="resultmil"></td>
+            </tr>
+            <tr>
+            <td>Result (civilian):</td>
+            <td id="resultciv"></td>
+            </tr>
+        </table>
+    </body> 
+</html>
